@@ -141,6 +141,7 @@ export default function Sidenav({
       email: emailAddress,
       phone_number: getClaimDetails(userInfoResponse, "phone_number"),
       gender: getClaimDetails(userInfoResponse, "gender"),
+      constituency: getClaimDetails(userInfoResponse, "constituency"),
       address: {
         value: address,
         verified: addressDetails.verified
@@ -839,6 +840,12 @@ export default function Sidenav({
                           <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
                             {t("gender")}: {userInfo?.gender?.value}
                             {userInfo?.gender?.verified && verifiedIcon}
+                          </a>
+                        )}
+                        {userInfo?.constituency?.value && (
+                          <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
+                            {t("constituency")}: {userInfo?.constituency?.value}
+                            {userInfo?.constituency?.verified && verifiedIcon}
                           </a>
                         )}
                         {userInfo?.phone_number?.value && (
