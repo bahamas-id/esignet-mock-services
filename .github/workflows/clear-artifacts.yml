@@ -1,0 +1,13 @@
+name: 'Delete old artifacts'
+
+on:
+  schedule:
+    - cron: '0 * * * *' # every hour
+
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  delete-artifacts:
+    permissions:
+      actions: write
+    uses: mosip/kattu/.github/workflows/clear-artifacts.yml@master
