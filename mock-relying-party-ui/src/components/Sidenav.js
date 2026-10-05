@@ -142,6 +142,10 @@ export default function Sidenav({
       phone_number: getClaimDetails(userInfoResponse, "phone_number"),
       gender: getClaimDetails(userInfoResponse, "gender"),
       constituency: getClaimDetails(userInfoResponse, "constituency"),
+	  addressLine: getClaimDetails(userInfoResponse, "addressLine"),
+	  settlement: getClaimDetails(userInfoResponse, "settlement"),
+	  island: getClaimDetails(userInfoResponse, "island"),
+	  postBoxAddress: getClaimDetails(userInfoResponse, "postBoxAddress"),
       address: {
         value: address,
         verified: addressDetails.verified
@@ -846,6 +850,30 @@ export default function Sidenav({
                           <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
                             {t("constituency")}: {userInfo?.constituency?.value}
                             {userInfo?.constituency?.verified && verifiedIcon}
+                          </a>
+                        )}
+						{userInfo?.addressLine?.value && (
+                          <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
+                            {t("addressLine")}: {userInfo?.addressLine?.value}
+                            {userInfo?.addressLine?.verified && verifiedIcon}
+                          </a>
+                        )}
+						{userInfo?.settlement?.value && (
+                          <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
+                            {t("settlement")}: {userInfo?.settlement?.value}
+                            {userInfo?.settlement?.verified && verifiedIcon}
+                          </a>
+                        )}
+						{userInfo?.island?.value && (
+                          <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
+                            {t("island")}: {userInfo?.island?.value}
+                            {userInfo?.island?.verified && verifiedIcon}
+                          </a>
+                        )}
+						{userInfo?.postBoxAddress?.value && (
+                          <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
+                            {t("postBoxAddress")}: {userInfo?.postBoxAddress?.value}
+                            {userInfo?.postBoxAddress?.verified && verifiedIcon}
                           </a>
                         )}
                         {userInfo?.phone_number?.value && (
