@@ -128,31 +128,48 @@ export default function Sidenav({
     }
   };
 
-  // Checking and getting Verified claims.
   const setUserDetail = (userInfoResponse) => {
-    let addressDetails = getClaimDetails(userInfoResponse, "address");
-    let address = getAddress(addressDetails.value);
-    setAddress(address);
-    const emailDetails = getClaimDetails(userInfoResponse, "email");
-    setEmailAddress(emailDetails);
+  const addressLine = getClaimDetails(userInfoResponse, "addressLine");
+  const settlement = getClaimDetails(userInfoResponse, "settlement");
+  const island = getClaimDetails(userInfoResponse, "island");
+  const postBoxAddress = getClaimDetails(userInfoResponse, "postBoxAddress");
 
-    let tempUserInfo = {
-      name: getClaimDetails(userInfoResponse, "name"),
-      email: emailAddress,
-      phone_number: getClaimDetails(userInfoResponse, "phone_number"),
-      gender: getClaimDetails(userInfoResponse, "gender"),
-      constituency: getClaimDetails(userInfoResponse, "constituency"),
-      address: {
-        value: address,
-        verified: addressDetails.verified
-      },
-      birthdate: getClaimDetails(userInfoResponse, "birthdate"),
-      picture: getClaimDetails(userInfoResponse, "picture")
-    }
-    setUserInfo(tempUserInfo);
-    setStatus(states.LOADED);
-    localStorage.setItem(userInfo_keyname, JSON.stringify(userInfoResponse));
-  }
+  const address = [
+    addressLine.value,
+    settlement.value,
+    island.value,
+    postBoxAddress.value
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  setAddress(address);
+
+  const emailDetails = getClaimDetails(userInfoResponse, "email");
+  setEmailAddress(emailDetails);
+
+  let tempUserInfo = {
+    name: getClaimDetails(userInfoResponse, "name"),
+    email: emailAddress,
+    phone_number: getClaimDetails(userInfoResponse, "phone_number"),
+    gender: getClaimDetails(userInfoResponse, "gender"),
+    constituency: getClaimDetails(userInfoResponse, "constituency"),
+    address: {
+      value: address,
+      verified:
+        addressLine.verified ||
+        settlement.verified ||
+        island.verified ||
+        postBoxAddress.verified
+    },
+    birthdate: getClaimDetails(userInfoResponse, "birthdate"),
+    picture: getClaimDetails(userInfoResponse, "picture")
+  };
+
+  setUserInfo(tempUserInfo);
+  setStatus(states.LOADED);
+  localStorage.setItem(userInfo_keyname, JSON.stringify(userInfoResponse));
+};
 
   const getClaimDetails = (userInfo, fieldName) => {
     let result = { value: null, verified: false };
