@@ -142,10 +142,10 @@ export default function Sidenav({
       phone_number: getClaimDetails(userInfoResponse, "phone_number"),
       gender: getClaimDetails(userInfoResponse, "gender"),
       constituency: getClaimDetails(userInfoResponse, "constituency"),
-	  addressLine: getClaimDetails(userInfoResponse, "addressLine"),
+	  addressline: getClaimDetails(userInfoResponse, "addressline"),
 	  settlement: getClaimDetails(userInfoResponse, "settlement"),
 	  island: getClaimDetails(userInfoResponse, "island"),
-	  postBoxAddress: getClaimDetails(userInfoResponse, "postBoxAddress"),
+	  postboxaddress: getClaimDetails(userInfoResponse, "postboxaddress"),
       address: {
         value: address,
         verified: addressDetails.verified
@@ -852,10 +852,10 @@ export default function Sidenav({
                             {userInfo?.constituency?.verified && verifiedIcon}
                           </a>
                         )}
-						{userInfo?.addressLine?.value && (
+						{userInfo?.addressline?.value && (
                           <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
-                            {t("addressLine")}: {userInfo?.addressLine?.value}
-                            {userInfo?.addressLine?.verified && verifiedIcon}
+                            {t("addressline")}: {userInfo?.addressline?.value}
+                            {userInfo?.addressline?.verified && verifiedIcon}
                           </a>
                         )}
 						{userInfo?.settlement?.value && (
@@ -870,10 +870,10 @@ export default function Sidenav({
                             {userInfo?.island?.verified && verifiedIcon}
                           </a>
                         )}
-						{userInfo?.postBoxAddress?.value && (
+						{userInfo?.postboxaddress?.value && (
                           <a className="px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex w-max">
-                            {t("postBoxAddress")}: {userInfo?.postBoxAddress?.value}
-                            {userInfo?.postBoxAddress?.verified && verifiedIcon}
+                            {t("postboxaddress")}: {userInfo?.postboxaddress?.value}
+                            {userInfo?.postboxaddress?.verified && verifiedIcon}
                           </a>
                         )}
                         {userInfo?.phone_number?.value && (
